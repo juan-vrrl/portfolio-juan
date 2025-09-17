@@ -15,8 +15,10 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Juan Verrel Tanuwijaya - Portfolio",
+    icons: {
+    icon: "/favicon.ico",
+  },
   description: "Informatics Engineering student passionate about full-stack development and modern web technologies.",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
