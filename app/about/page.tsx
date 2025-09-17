@@ -11,8 +11,8 @@ export default function AboutPage() {
 
   return (
     <VantaWave>
-      <main className="relative z-10 container mx-auto px-6 py-8 h-full">
-        <div className="max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <main className="relative z-10 mx-auto px-4 py-12 h-full mb-12 lg:mb-0">
+        <div className="max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:mt-[15vh]">
           {/* Left Side */}
           <div
             className="flex flex-col items-center justify-center space-y-6"
@@ -34,14 +34,14 @@ export default function AboutPage() {
 
             {/* About Me Section */}
             <div
-              className="text-center max-w-md"
+              className="text-center max-w-md backdrop-blur-sm bg-black/20 rounded-3xl p-2"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               <h1 className="text-3xl font-bold mb-4">
                 About <span className="text-primary">Me</span>
               </h1>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
                 Hello, my name is{" "}
                 <span className="font-semibold text-primary">
                   Juan Verrel Tanuwijaya
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
           {/* Right Side */}
           <div
-            className="flex flex-col justify-center space-y-6"
+            className="flex flex-col justify-center space-y-6 sm:items-center lg:items-start"
             data-aos="fade-left"
             data-aos-delay="300"
           >

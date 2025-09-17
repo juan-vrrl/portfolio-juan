@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { ProjectCard } from "@/components/project-card";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useAOS } from "@/lib/useAOS"; // custom hook for initializing AOS
 import VantaFog from "@/components/VantaFog";
 
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
+
 export default function ProjectsPage() {
   useAOS();
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Dummy projects
   const projects = [
@@ -70,21 +69,21 @@ export default function ProjectsPage() {
     },
   ];
 
-  const projectsPerPage = 3;
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
-
-  const getCurrentProjects = () => {
-    const start = currentIndex * projectsPerPage;
-    return projects.slice(start, start + projectsPerPage);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalPages);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
-  };
+  // Initialize Keen Slider
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    slides: {
+      perView: 1,
+      spacing: 16,
+    },
+    breakpoints: {
+      "(min-width: 768px)": {
+        slides: { perView: 2, spacing: 24 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 3, spacing: 32 },
+      },
+    },
+  });
 
   return (
     <VantaFog>
@@ -104,77 +103,23 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Projects grid with AOS */}
-          <div className="flex-1 flex flex-col min-h-0">
-            <div
-              key={currentIndex}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1 mb-6"
-              data-aos="fade-up"
-              data-aos-duration="600"
-            >
-              {getCurrentProjects().map((project, index) => (
-                <div
-                  key={currentIndex * projectsPerPage + index}
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 100}
-                >
-                  <ProjectCard
-                    title={project.title}
-                    description={project.description}
-                    image={project.image}
-                    techStack={project.techStack}
-                    liveUrl={project.liveUrl}
-                    githubUrl={project.githubUrl}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Navigation Controls */}
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-4 mt-8">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={goToPrevious}
-                  disabled={currentIndex === 0}
-                  className="flex items-center gap-2"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                  Previous
-                </Button>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground mr-2">
-                    Page {currentIndex + 1} of {totalPages}
-                  </span>
-                  {Array.from({ length: totalPages }, (_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentIndex(i)}
-                      className={`w-3 h-3 rounded-full transition-colors border ${
-                        i === currentIndex
-                          ? "bg-primary border-primary"
-                          : "bg-background border-muted-foreground hover:bg-muted"
-                      }`}
-                      aria-label={`Go to page ${i + 1}`}
-                    />
-                  ))}
-                </div>
-
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={goToNext}
-                  disabled={currentIndex === totalPages - 1}
-                  className="flex items-center gap-2"
-                >
-                  Next
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              </div>
-            )}
+          {/* Keen Slider Carousel */}
+          <div
+            ref={sliderRef}
+            className="keen-slider"
+            data-aos="fade-up" 
+            data-aos-duration="800" 
+          >
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="keen-slider__slide will-change-transform"
+              >
+                <ProjectCard {...project} />
+              </div>  
+            ))}
           </div>
+          
         </div>
       </main>
     </VantaFog>

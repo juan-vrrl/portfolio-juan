@@ -51,7 +51,7 @@ export default function HomePage() {
             data-aos="fade-up"
           >
             <h1
-              className="text-4xl md:text-6xl font-bold mb-6 text-balance"
+              className="text-2xl md:text-4xl lg:text-6xl font-bold mb-6 text-balance"
               data-aos="zoom-in"
             >
               <span className="text-primary font-bold">
@@ -61,7 +61,7 @@ export default function HomePage() {
 
             {/* React Typed */}
             <p
-              className="text-xl md:text-2xl text-muted-foreground text-balance mb-8"
+              className="text-xl md:text-2xl sm:text-sm text-muted-foreground text-balance mb-8"
               data-aos="fade-up"
               data-aos-delay="200"
             >

@@ -70,15 +70,17 @@ export default function VantaWave({
 
   if (!isClient) {
     return (
-      <div className="relative h-screen w-full bg-[#04121B]">
-        <div className="relative z-10 h-full">{children}</div>
-      </div>
+      <>
+        <div className="fixed inset-0 w-full h-full bg-[#04121B] z-0" />
+        <div className="relative z-10 min-h-screen">{children}</div>
+      </>
     )
   }
 
   return (
-    <div ref={vantaRef} className="relative h-screen w-full">
-      <div className="relative z-10 h-full">{children}</div>
-    </div>
+    <>
+      <div ref={vantaRef} className="fixed inset-0 w-full h-full z-0" />
+      <div className="relative z-10 min-h-screen">{children}</div>
+    </>
   )
 }
