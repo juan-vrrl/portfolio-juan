@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <VantaWave>
       <main className="relative z-10 mx-auto px-4 py-12 h-full mb-12 lg:mb-0">
-        <div className="max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:mt-[15vh]">
+        <div className="max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:mt-[15vh] overflow-hidden">
           {/* Left Side */}
           <div
             className="flex flex-col items-center justify-center space-y-6"
@@ -20,7 +20,7 @@ export default function AboutPage() {
           >
             {/* Profile Photo */}
             <div
-              className="w-64 h-80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+              className="w-32 h-40 lg:w-64 lg:h-80  rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
               data-aos="zoom-in"
             >
               <Image
