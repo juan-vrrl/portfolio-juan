@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { ProjectCard } from "@/components/project-card";
-import { useAOS } from "@/lib/useAOS"; // custom hook for initializing AOS
+import { useAOS } from "@/lib/useAOS";
 import VantaFog from "@/components/VantaFog";
 
 import "keen-slider/keen-slider.min.css";
@@ -10,7 +11,6 @@ import { useKeenSlider } from "keen-slider/react";
 export default function ProjectsPage() {
   useAOS();
 
-  // Dummy projects
   const projects = [
     {
       title: "ITERA OBE System",
@@ -69,8 +69,8 @@ export default function ProjectsPage() {
     },
   ];
 
-  // Initialize Keen Slider
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 1,
       spacing: 16,
@@ -83,11 +83,26 @@ export default function ProjectsPage() {
         slides: { perView: 3, spacing: 32 },
       },
     },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
   });
+
+  // compute dots safely
+  const totalDots =
+    instanceRef.current?.track?.details?.slides.length &&
+    instanceRef.current?.options?.slides &&
+    typeof instanceRef.current.options.slides === 'object' &&
+    'perView' in instanceRef.current.options.slides &&
+    typeof instanceRef.current.options.slides.perView === 'number'
+      ? instanceRef.current.track.details.slides.length -
+        instanceRef.current.options.slides.perView +
+        1
+      : 0;
 
   return (
     <VantaFog>
-      <main className="relative z-10 mx-auto px-4 py-12 h-full">
+      <main className="relative z-10 mx-auto px-4 py-12 h-full mb-12">
         <div className="max-w-6xl mx-auto h-full flex flex-col">
           {/* Header */}
           <div
@@ -103,12 +118,12 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Keen Slider Carousel */}
+          {/* Slider */}
           <div
             ref={sliderRef}
             className="keen-slider"
-            data-aos="fade-up" 
-            data-aos-duration="800" 
+            data-aos="fade-up"
+            data-aos-duration="800"
           >
             {projects.map((project, index) => (
               <div
@@ -116,10 +131,26 @@ export default function ProjectsPage() {
                 className="keen-slider__slide will-change-transform"
               >
                 <ProjectCard {...project} />
-              </div>  
+              </div>
             ))}
           </div>
-          
+
+          {/* Dots Navigation */}
+          {totalDots > 0 && (
+            <div className="flex justify-center mt-6 gap-2">
+              {Array.from({ length: totalDots }, (_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => instanceRef.current?.moveToIdx(idx)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    currentSlide === idx
+                      ? "bg-primary scale-110"
+                      : "bg-gray-400 hover:bg-gray-500"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </VantaFog>
