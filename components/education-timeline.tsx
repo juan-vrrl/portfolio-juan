@@ -5,7 +5,7 @@ export function EducationTimeline() {
     {
       title: "S1 Informatics Engineering",
       institution: "Institut Teknologi Sumatera",
-      period: "(2019-2025)",
+      period: "(2021-2025)",
       icon: GraduationCap,
     },
         {
@@ -23,7 +23,7 @@ export function EducationTimeline() {
     {
       title: "Senior Highschool",
       institution: "SMA Immanuel Bandar Lampung",
-      period: "(2016-2019)",
+      period: "(2018-2021)",
       icon: BookOpen,
     },
   ]
