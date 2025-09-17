@@ -1,12 +1,24 @@
-import { GraduationCap, BookOpen } from "lucide-react"
+import { GraduationCap, BookOpen, Code } from "lucide-react"
 
 export function EducationTimeline() {
   const educationData = [
     {
       title: "S1 Informatics Engineering",
       institution: "Institut Teknologi Sumatera",
-      period: "(2019-2023)",
+      period: "(2019-2025)",
       icon: GraduationCap,
+    },
+        {
+      title: "Kampus Merdeka - Back-End JavaScript",
+      institution: "Binar Academy",
+      period: "(2024)",
+      icon: Code,
+    },
+        {
+      title: "Kampus Merdeka - React and Back-End Cohort",
+      institution: "Dicoding Indonesia",
+      period: "(2024)",
+      icon: Code,
     },
     {
       title: "Senior Highschool",

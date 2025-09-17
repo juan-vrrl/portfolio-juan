@@ -6,31 +6,31 @@ export function SocialLinks() {
     {
       name: "WhatsApp",
       icon: MessageCircle,
-      href: "#", // You can replace with your actual WhatsApp link
+      href: "https://wa.link/vm689t", 
       color: "hover:text-green-600",
     },
     {
       name: "Facebook",
       icon: Facebook,
-      href: "#", // You can replace with your actual Facebook link
+      href: "https://www.facebook.com/juan.tanuwijaya", 
       color: "hover:text-blue-600",
     },
     {
       name: "Instagram",
       icon: Instagram,
-      href: "#", // You can replace with your actual Instagram link
+      href: "https://www.instagram.com/juan_vrrl/", 
       color: "hover:text-pink-600",
     },
     {
       name: "GitHub",
       icon: Github,
-      href: "#", // You can replace with your actual GitHub link
+      href: "https://github.com/juan-vrrl", 
       color: "hover:text-gray-900 dark:hover:text-gray-100",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "#", // You can replace with your actual LinkedIn link
+      href: "https://www.linkedin.com/in/juan-verrel-tanuwijaya-389293291/",
       color: "hover:text-blue-700",
     },
   ]

@@ -1,56 +1,97 @@
-import { EducationTimeline } from "@/components/education-timeline"
-import { SkillsSection } from "@/components/skills-section"
-import Image from "next/image"
+"use client";
+
+import { EducationTimeline } from "@/components/education-timeline";
+import { SkillsSection } from "@/components/skills-section";
+import Image from "next/image";
+import { useAOS } from "@/lib/useAOS";
+import VantaWave from "@/components/VantaWave";
 
 export default function AboutPage() {
+  useAOS();
+
   return (
-    <div className="h-screen bg-gradient-to-br from-background via-card to-background overflow-hidden">
-      <main className="container mx-auto px-6 py-8 h-full">
+    <VantaWave>
+      <main className="relative z-10 container mx-auto px-6 py-8 h-full">
         <div className="max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Side - Photo and About Me */}
-          <div className="flex flex-col items-center justify-center space-y-6">
+          {/* Left Side */}
+          <div
+            className="flex flex-col items-center justify-center space-y-6"
+            data-aos="fade-right"
+          >
             {/* Profile Photo */}
-            <div className="w-64 h-80 rounded-2xl overflow-hidden shadow-lg">
+            <div
+              className="w-64 h-80 rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+              data-aos="zoom-in"
+            >
               <Image
-                src="/graduation-photo.png"
+                src="/profile.jpeg"
                 alt="Juan Verrel Tanuwijaya"
-                width={256}
-                height={320}
+                width={3200}
+                height={3200}
                 className="w-full h-full object-cover"
               />
             </div>
 
             {/* About Me Section */}
-            <div className="text-center max-w-md">
+            <div
+              className="text-center max-w-md"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <h1 className="text-3xl font-bold mb-4">
                 About <span className="text-primary">Me</span>
               </h1>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Hello, my name is <span className="font-semibold text-foreground">Juan Verrel Tanuwijaya</span>, I have
-                just graduated from <span className="font-semibold text-foreground">Institut Teknologi Sumatera</span>{" "}
-                with a Bachelor's degree in{" "}
-                <span className="font-semibold text-foreground">Informatics Engineering</span> and focusing as a{" "}
-                <span className="font-semibold text-primary">Full-Stack Developer</span>. I am well organised and always
-                meet deadlines when they have been set. I find it easy working with other people but can also work well
-                independently. I am seeking a job in the industry to apply and enhance my skills, while also
-                contributing to the industry's growth and success.
+                Hello, my name is{" "}
+                <span className="font-semibold text-primary">
+                  Juan Verrel Tanuwijaya
+                </span>
+                , I am a{" "}
+                <span className="font-semibold text-primary">
+                  Software Engineer
+                </span>{" "}
+                with a Bachelor degree in{" "}
+                <span className="font-semibold text-primary">
+                  Informatics Engineering
+                </span>{" "}
+                at Institut Teknologi Sumatera. My primary focus is on{" "}
+                <span className="font-semibold text-primary">
+                  Full-Stack Web Development
+                </span>
+                , where I utilize{" "}
+                <span className="font-medium text-primary">Next.js</span> or{" "}
+                <span className="font-medium text-primary">React.js</span> for
+                front-end development, and{" "}
+                <span className="font-medium text-primary">Next.js</span> or{" "}
+                <span className="font-medium text-primary">Express.js</span> for
+                back-end development. Additionally, I have expertise in SQL
+                databases and{" "}
+                <span className="font-medium text-primary">Prisma</span> ORM.
               </p>
             </div>
           </div>
 
-          {/* Right Side - Skills and Education */}
-          <div className="flex flex-col justify-center space-y-6">
-            {/* My Education */}
-            <div>
-              <h2 className="text-2xl font-bold mb-4 text-primary">My Education</h2>
+          {/* Right Side */}
+          <div
+            className="flex flex-col justify-center space-y-6"
+            data-aos="fade-left"
+            data-aos-delay="300"
+          >
+            {/* Education */}
+            <div data-aos="fade-up" data-aos-delay="500">
+              <h2 className="text-2xl font-bold mb-4 text-primary">
+                Education
+              </h2>
               <EducationTimeline />
             </div>
 
-            {/* Skills Sections */}
-            <SkillsSection />
+            {/* Skills */}
+            <div data-aos="fade-up" data-aos-delay="700">
+              <SkillsSection />
+            </div>
           </div>
         </div>
       </main>
-    </div>
-  )
+    </VantaWave>
+  );
 }
