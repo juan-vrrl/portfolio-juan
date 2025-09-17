@@ -102,7 +102,7 @@ export default function ProjectsPage() {
 
   return (
     <VantaFog>
-      <main className="relative z-10 mx-auto px-4 py-12 h-full mb-12">
+      <main className="relative z-10 mx-auto px-4 py-12 h-full mb-0 md:mb-12 lg:mb-12">
         <div className="max-w-6xl mx-auto h-full flex flex-col">
           {/* Header */}
           <div
