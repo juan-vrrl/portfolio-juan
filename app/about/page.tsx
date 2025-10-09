@@ -20,7 +20,7 @@ export default function AboutPage() {
           >
             {/* Profile Photo */}
             <div
-              className="w-32 h-40 lg:w-64 lg:h-80  rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+              className="w-32 h-40 lg:w-64 lg:h-80 rounded-2xl overflow-hidden shadow-lg"
               data-aos="zoom-in"
             >
               <Image
