@@ -41,7 +41,7 @@ export default function AboutPage() {
               <h1 className="text-3xl font-bold mb-4">
                 About <span className="text-primary">Me</span>
               </h1>
-              <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
                 Hello, my name is{" "}
                 <span className="font-semibold text-primary">
                   Juan Verrel Tanuwijaya
@@ -50,24 +50,16 @@ export default function AboutPage() {
                 <span className="font-semibold text-primary">
                   Software Engineer
                 </span>{" "}
-                with a Bachelor degree in{" "}
+                with a Bachelor's degree in{" "}
                 <span className="font-semibold text-primary">
                   Informatics Engineering
                 </span>{" "}
-                at Institut Teknologi Sumatera. My primary focus is on{" "}
+                from Institut Teknologi Sumatera. I specialize in{" "}
                 <span className="font-semibold text-primary">
                   Full-Stack Web Development
                 </span>
-                , where I utilize{" "}
-                <span className="font-medium text-primary">Next.js</span> or{" "}
-                <span className="font-medium text-primary">React.js</span> for
-                front-end development, and{" "}
-                <span className="font-medium text-primary">Next.js</span> or{" "}
-                <span className="font-medium text-primary">Express.js</span> for
-                back-end development. Additionally, I have expertise in SQL
-                databases and{" "}
-                <span className="font-medium text-primary">Prisma</span> ORM.
-              </p>
+                , focusing on designing, developing, and maintaining scalable web applications and robust API systems. My work involves ensuring seamless integration between front-end interfaces, back-end logic, and database layers to deliver efficient, high-performance solutions.
+                </p>
             </div>
           </div>
 
