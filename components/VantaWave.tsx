@@ -43,7 +43,7 @@ export default function VantaWave({
             shininess: 50,
             waveHeight: 20,
             waveSpeed: 0.5,
-            zoom: 0.75,
+            zoom: 1,
           })
           setVantaEffect(effect)
         }
