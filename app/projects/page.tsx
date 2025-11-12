@@ -15,7 +15,7 @@ export default function ProjectsPage() {
     {
       title: "ITERA OBE System",
       description:
-        "The OBE (Outcome-based Education) System is the primary management tool for Curriculum Evaluation and Monitoring at Institut Teknologi Sumatera. This application is developed with Next.js and TypeScript to guarantee precise validations, utilizing PostgreSQL as the database and Prisma as the ORM.",
+        "Primary management tool for Curriculum Evaluation and Monitoring at Institut Teknologi Sumatera. A university-grade curriculum management system for tracking student learning outcomes. Features include assessment templates, performance tracking, and Excel import/export tools.",
       image: "/obe.png",
       techStack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
     },
@@ -66,6 +66,7 @@ export default function ProjectsPage() {
         "The Posyandu Mawar I Way Huwi Data Management Website is an advanced application designed to efficiently manage patient data for Posyandu Mawar I Way Huwi. Developed as a full-stack solution using Next.js, this application ensures streamlined data management and enhanced productivity. The app is powered by CockroachDB, providing a robust and scalable database solution, with Prisma serving as the ORM for seamless data handling and manipulation.",
       image: "/posyandu.jpeg",
       techStack: ["Next.js", "TypeScript", "CockroachDB", "Prisma"],
+      githubUrl: "https://github.com/Kaben011201/TUBES_KAPITA_SELEKTA_09_2023",
     },
   ];
 
