@@ -13,7 +13,7 @@ export default function ProjectsPage() {
 
   const projects = [
     {
-      title: "PKPP ITERA (Ongoing Project)",
+      title: "PKPP ITERA",
       description:
         "A full-stack web application built for the PKPP (Pusat Kurikulum dan Pengembangan Pembelajaran) at Institut Teknologi Sumatera. This comprehensive platform serves as the digital hub for ITERA's curriculum development initiatives, offering a modern public-facing website with dynamic news management, organizational information, PKPP service offerings, and interactive contact sections. The system is supported by a secure admin dashboard that enables efficient content management, service administration, and analytics to support informed decision-making.",
       image: "/pkpp.png",
