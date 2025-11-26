@@ -13,11 +13,19 @@ export default function ProjectsPage() {
 
   const projects = [
     {
+      title: "PKPP ITERA (Ongoing Project)",
+      description:
+        "A full-stack web application built for the PKPP (Pusat Kurikulum dan Pengembangan Pembelajaran) at Institut Teknologi Sumatera. This comprehensive platform serves as the digital hub for ITERA's curriculum development initiatives, offering a modern public-facing website with dynamic news management, organizational information, PKPP service offerings, and interactive contact sections. The system is supported by a secure admin dashboard that enables efficient content management, service administration, and analytics to support informed decision-making.",
+      image: "/pkpp.png",
+      techStack: ["Next.js", "TypeScript", "ShadCN UI", "PostgreSQL", "Prisma"],
+      liveUrl: "https://pkpp-itera.vercel.app/",
+    },
+    {
       title: "ITERA OBE System",
       description:
         "Primary management tool for Curriculum Evaluation and Monitoring at Institut Teknologi Sumatera. A university-grade curriculum management system for tracking student learning outcomes. Features include assessment templates, performance tracking, and Excel import/export tools.",
       image: "/obe.png",
-      techStack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+      techStack: ["Next.js", "TypeScript", "ShadCN UI", "PostgreSQL", "Prisma"],
     },
     {
       title: "Air Hopper",
@@ -93,9 +101,9 @@ export default function ProjectsPage() {
   const totalDots =
     instanceRef.current?.track?.details?.slides.length &&
     instanceRef.current?.options?.slides &&
-    typeof instanceRef.current.options.slides === 'object' &&
-    'perView' in instanceRef.current.options.slides &&
-    typeof instanceRef.current.options.slides.perView === 'number'
+    typeof instanceRef.current.options.slides === "object" &&
+    "perView" in instanceRef.current.options.slides &&
+    typeof instanceRef.current.options.slides.perView === "number"
       ? instanceRef.current.track.details.slides.length -
         instanceRef.current.options.slides.perView +
         1
