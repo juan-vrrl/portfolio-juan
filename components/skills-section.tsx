@@ -4,17 +4,17 @@ export function SkillsSection() {
   const skillCategories = [
     {
       title: "Programming Language",
-      skills: ["JavaScript", "Node.js", "PHP", "Python", "C++"],
+      skills: ["JavaScript", "TypeScript", "Node.js", "PHP", "Python", "C++"],
       titleColor: "text-primary",
     },
     {
       title: "Framework",
-      skills: ["React.js", "Next.js", "Express.js"],
+      skills: ["React.js", "Next.js", "Express.js", "NestJS"],
       titleColor: "text-primary",
     },
     {
       title: "Other Skills",
-      skills: ["HTML", "CSS", "MySQL", "PostgreSQL", "Figma", "Git", "Prisma", "Tailwind"],
+      skills: ["HTML", "CSS", "MySQL", "PostgreSQL", "MongoDB", "Figma", "Git", "Prisma", "Tailwind", "AWS", "Deployment"],
       titleColor: "text-primary",
     },
   ]
