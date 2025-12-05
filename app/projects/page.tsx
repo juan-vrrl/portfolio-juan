@@ -12,20 +12,29 @@ export default function ProjectsPage() {
   useAOS();
 
   const projects = [
+        {
+      title: "MovixNest - Movie Catalog",
+      description:
+        "MovixNest is a full-stack Movie Catalog application built with Next.js, NestJS, TypeScript, and MongoDB, designed to strengthen my skills in modern web development. The frontend features a responsive UI with glassmorphism design, animated gradients, and filtering capabilities. The NestJS backend implements JWT authentication, role-based authorization, and a robust review system. Users can browse and search movies with advanced filtering, while authenticated users can submit reviews. The application follows modern best practices including secure password hashing with bcrypt, structured Mongoose relationships, strict request validation, and TMDB API integration for automatic movie data seeding. This project demonstrates comprehensive full-stack capabilities from RESTful API architecture to exceptional user experience design.",
+      image: "/movix.png",
+      techStack: ["NestJS", "MongoDB", "Next.js", "TypeScript", "PostgreSQL", "Monggoose"],
+      liveUrl: "https://movixnest.vercel.app/",
+      githubUrl: ["https://github.com/juan-vrrl/next-movie-catalog", "https://github.com/juan-vrrl/nest-mongodb-movie-catalog"],
+    },
     {
       title: "PKPP ITERA",
       description:
         "A full-stack web application built for the PKPP (Pusat Kurikulum dan Pengembangan Pembelajaran) at Institut Teknologi Sumatera. This comprehensive platform serves as the digital hub for ITERA's curriculum development initiatives, offering a modern public-facing website with dynamic news management, organizational information, PKPP service offerings, and interactive contact sections. The system is supported by a secure admin dashboard that enables efficient content management, service administration, and analytics to support informed decision-making.",
       image: "/pkpp.png",
-      techStack: ["Next.js", "TypeScript", "ShadCN UI", "PostgreSQL", "Prisma"],
+      techStack: ["Next.js", "TypeScript", "Tailwind", "ShadCN UI", "PostgreSQL", "Prisma"],
       liveUrl: "https://pkpp-itera.vercel.app/",
     },
     {
       title: "ITERA OBE System",
       description:
-        "Primary management tool for Curriculum Evaluation and Monitoring at Institut Teknologi Sumatera. A university-grade curriculum management system for tracking student learning outcomes. Features include assessment templates, performance tracking, and Excel import/export tools.",
+        "Primary management tool for Curriculum Evaluation and Monitoring at Institut Teknologi Sumatera. A university-grade curriculum management system for tracking student learning outcomes. The platform streamlines curriculum management and student learning outcome tracking across multiple departments, featuring comprehensive course management with CPMK (Course Learning Outcomes) and prerequisite mapping, alongside a flexible multi-template assessment framework that supports configurable evaluation criteria and weighted scoring systems with automated grade aggregation. Implemented an RPS (Rencana Pembelajaran Semester) generator that automates course syllabus creation with weekly lesson planning, assessment scheduling, and digital signature workflows for multi-level approval chains. Implemented robust grade management supporting both manual entry and Excel batch import/export with real-time validation and automatic recalculation when new entry uploaded. Built performance analytics dashboards with Chart.js for visualizing student achievement rates and curriculum effectiveness metrics. Architected a role-based access control system for seven user types integrated with the university's OAuth2 SSO. Designed curriculum mapping tools for connecting learning outcomes to program goals, portfolio generation with statistical analysis, and automated data synchronization for enrollments and faculty assignments.",
       image: "/obe.png",
-      techStack: ["Next.js", "TypeScript", "ShadCN UI", "PostgreSQL", "Prisma"],
+      techStack: ["Next.js", "TypeScript", "Tailwind", "ShadCN UI", "PostgreSQL", "Prisma"],
     },
     {
       title: "Air Hopper",
@@ -40,14 +49,14 @@ export default function ProjectsPage() {
       description:
         "Helpdesk SIPD (Sistem Informasi Pembangunan Daerah) is a comprehensive web-based helpdesk application designed to enhance the efficiency of problem reporting and resolution within regional government systems. Developed using Next.js for both frontend and backend, and PostgreSQL with Prisma ORM for database management, the system ensures seamless, real-time interactions among three user roles: Pelapor (Reporter), Solver, and Admin.",
       image: "/helpdesk-sipd.png",
-      techStack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+      techStack: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Prisma"],
     },
     {
       title: "Otak Atik : Aplikasi Belajar Untuk Semua",
       description:
         "Otak Atik is a website-based online learning platform that allows users to learn and teach a variety of materials without being limited to basic subjects. With broad material flexibility, Otak Atik enables users to explore and instruct in various disciplines according to their interests and needs, providing access to more comprehensive and varied learning compared to platforms that only offer school materials. The application is built with Next.js and TypeScript as the main technologies, ensuring a dynamic and efficient user interface. It also utilizes Tailwind CSS for modern, responsive design, Prisma ORM and CockroachDB for robust and scalable database management, and Cloudinary for efficient media storage and management.",
       image: "/otakatik.png",
-      techStack: ["Next.js", "TypeScript", "CockroachDB", "Prisma"],
+      techStack: ["Next.js", "TypeScript", "Tailwind", "CockroachDB", "Prisma"],
       liveUrl: "https://otak-atik.vercel.app/",
       githubUrl: "https://github.com/ryudhis/Otak-Atik",
     },

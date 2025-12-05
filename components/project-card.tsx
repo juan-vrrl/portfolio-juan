@@ -26,7 +26,7 @@ interface ProjectCardProps {
   image: string;
   techStack: string[];
   liveUrl?: string;
-  githubUrl?: string;
+  githubUrl?: string | string[];
 }
 
 export function ProjectCard({
@@ -39,6 +39,9 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Normalize githubUrl to always be an array for easier handling
+  const githubUrls = githubUrl ? (Array.isArray(githubUrl) ? githubUrl : [githubUrl]) : [];
+
   // Truncate description to ensure consistent card heights
   const maxDescriptionLength = 150;
   const truncatedDescription =
@@ -49,7 +52,7 @@ export function ProjectCard({
 
   return (
     <>
-      <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
         <div className="relative h-48 overflow-hidden">
           <Image
             src={image || "/placeholder.svg"}
@@ -66,7 +69,7 @@ export function ProjectCard({
         </CardHeader>
 
         <CardContent className="flex-1 flex flex-col">
-          <p className="text-sm text-muted-foreground mb-4 flex-1">
+          <p className="text-sm text-muted-foreground mb-4 min-h-[4.5rem]">
             {truncatedDescription}
           </p>
 
@@ -75,7 +78,7 @@ export function ProjectCard({
               <DialogTrigger asChild>
                 <Button
                   variant="link"
-                  className="p-0 h-auto text-primary text-sm self-start"
+                  className="p-0 h-auto text-primary text-sm self-start hover:cursor-pointer"
                 >
                   Read more
                 </Button>
@@ -118,10 +121,10 @@ export function ProjectCard({
                         </a>
                       </Button>
                     )}
-                    {githubUrl && (
+                    {githubUrls.length === 1 && (
                       <Button asChild variant="outline" size="sm">
                         <a
-                          href={githubUrl}
+                          href={githubUrls[0]}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -130,6 +133,30 @@ export function ProjectCard({
                         </a>
                       </Button>
                     )}
+                    {githubUrls.length > 1 && (
+                      <>
+                        <Button asChild variant="outline" size="sm">
+                          <a
+                            href={githubUrls[0]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="h-4 w-4 mr-2" />
+                            Frontend
+                          </a>
+                        </Button>
+                        <Button asChild variant="outline" size="sm">
+                          <a
+                            href={githubUrls[1]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="h-4 w-4 mr-2" />
+                            Backend
+                          </a>
+                        </Button>
+                      </>
+                    )}
                   </div>
                 </div>
               </DialogContent>
@@ -137,7 +164,7 @@ export function ProjectCard({
           )}
 
           <div className="flex flex-wrap gap-2 mt-4">
-            {techStack.slice(0, 3 ).map((tech) => (
+            {techStack.slice(0, 3).map((tech) => (
               <Badge key={tech} variant="secondary" className="text-xs">
                 {tech}
               </Badge>
@@ -150,27 +177,53 @@ export function ProjectCard({
           </div>
         </CardContent>
 
-        <CardFooter className="flex gap-2 pt-4 flex-shrink-0">
+        <CardFooter className="flex flex-wrap gap-2 pt-4 flex-shrink-0">
           {liveUrl && (
-            <Button asChild size="sm" className="flex-1">
-              <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                <Eye className="h-4 w-4 mr-2" />
-                Live Demo
+            <Button asChild size="sm" className="flex-1 min-w-0">
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="truncate">
+                <Eye className="h-4 w-4 mr-2 flex-shrink-0" />
+                <span className="truncate">Live Demo</span>
               </a>
             </Button>
           )}
-          {githubUrl && (
+          {githubUrls.length === 1 && (
             <Button
               asChild
               variant="outline"
               size="sm"
-              className="flex-1 bg-transparent"
+              className="flex-1 bg-transparent min-w-0"
             >
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
+              <a href={githubUrls[0]} target="_blank" rel="noopener noreferrer" className="truncate">
+                <Github className="h-4 w-4 mr-2 flex-shrink-0" />
+                <span className="truncate">GitHub</span>
               </a>
             </Button>
+          )}
+          {githubUrls.length > 1 && (
+            <>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="flex-1 bg-transparent min-w-0"
+              >
+                <a href={githubUrls[0]} target="_blank" rel="noopener noreferrer" className="truncate">
+                  <Github className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <span className="truncate">Frontend</span>
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="flex-1 bg-transparent min-w-0"
+              >
+                <a href={githubUrls[1]} target="_blank" rel="noopener noreferrer" className="truncate">
+                  <Github className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <span className="truncate">Backend</span>
+                </a>
+              </Button>
+            </>
           )}
         </CardFooter>
       </Card>
