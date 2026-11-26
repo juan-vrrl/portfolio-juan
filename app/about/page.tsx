@@ -44,7 +44,7 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-10 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-14">
             <aside className="lg:sticky lg:top-28 lg:self-start">
               <Reveal>
-                <div className="relative mx-auto w-full max-w-[240px] sm:max-w-[300px] lg:mx-0">
+                <div className="relative mx-auto w-full max-w-[200px] sm:max-w-[220px] lg:mx-0 lg:max-w-[240px]">
                   <div
                     aria-hidden="true"
                     className="absolute -inset-2.5 rounded-[1.75rem] border border-primary/15"
@@ -55,7 +55,8 @@ export default function AboutPage() {
                       alt="Portrait of Juan Verrel Tanuwijaya"
                       fill
                       priority
-                      sizes="(max-width: 1024px) 300px, 300px"
+                      quality={90}
+                      sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                       className="object-cover object-center"
                     />
                     <div
