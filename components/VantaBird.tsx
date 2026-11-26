@@ -21,6 +21,7 @@ export default function VantaBird({
 
   useEffect(() => {
     if (!isClient || !vantaRef.current || effectRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const initVanta = async () => {
       try {

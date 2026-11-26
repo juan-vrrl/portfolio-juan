@@ -21,6 +21,7 @@ export default function VantaWave({
 
   useEffect(() => {
     if (!isClient || !vantaRef.current || vantaEffect) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
     const initVanta = async () => {
       try {
