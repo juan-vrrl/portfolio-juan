@@ -17,7 +17,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Frontend",
     icon: Layers3,
-    skills: ["React.js", "Next.js", "HTML", "CSS", "Tailwind", "Figma"],
+    skills: ["React.js", "Next.js", "HTML", "CSS", "Tailwind"],
   },
   {
     title: "Backend & Data",
@@ -27,6 +27,7 @@ const skillCategories: SkillCategory[] = [
       "Express.js",
       "NestJS",
       "Prisma",
+      "TypeORM",
       "PostgreSQL",
       "MySQL",
       "MongoDB",
@@ -35,7 +36,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Tools & Platforms",
     icon: Wrench,
-    skills: ["Git", "AWS", "Deployment"],
+    skills: ["Git", "Figma", "AWS", "Deployment"],
   },
 ]
 
