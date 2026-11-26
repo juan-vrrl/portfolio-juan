@@ -45,6 +45,9 @@ app/
   about/page.tsx       # About
   projects/page.tsx    # Projects + filtering
 components/
+  backgrounds.tsx      # Persistent Vanta layers (init, prewarm, pause/resume)
+  vanta-effects.ts     # Effect configs per route
+  page-shell.tsx
   floating-navigation.tsx
   reveal.tsx
   section-heading.tsx
@@ -53,7 +56,6 @@ components/
   project-card.tsx
   tech-icons.tsx
   typing-phrases.tsx
-  use-vanta-effect.ts
   social-links.tsx
   ui/                  # shadcn-style primitives
 lib/
@@ -64,6 +66,6 @@ public/                # Images, CV, favicon
 ## Notes
 
 - All motion respects `prefers-reduced-motion`.
-- Vanta/three.js backgrounds initialise after `load` on an idle frame, so WebGL never competes with hydration or first paint; device pixel ratio is capped at 2x.
+- Each Vanta background is a persistent layer: it initialises once after `load` on an idle frame, the others prewarm on hover or after settling, and hidden layers pause. Route changes just cross-fade existing WebGL scenes, so navigation never builds or tears down a context; device pixel ratio is capped at 2x.
 - Project images are served through `next/image` with AVIF/WebP output; `sharp` is installed for production image optimization.
 - Large source images for the heaviest project cards are available as optimized `.webp` files under `public/`.

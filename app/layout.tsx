@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { JetBrains_Mono, Manrope, Sora } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import { Backgrounds } from "@/components/backgrounds"
 import { FloatingNavigation } from "@/components/floating-navigation"
 import "./globals.css"
 
@@ -71,6 +72,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <Backgrounds />
         <FloatingNavigation />
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />

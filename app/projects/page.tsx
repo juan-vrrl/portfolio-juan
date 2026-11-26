@@ -7,7 +7,7 @@ import { ProjectCard } from "@/components/project-card"
 import { Reveal } from "@/components/reveal"
 import { SectionHeading } from "@/components/section-heading"
 import { cn } from "@/lib/utils"
-import VantaFog from "@/components/VantaFog"
+import { PageShell } from "@/components/page-shell"
 
 type ProjectCategory = "Full-Stack" | "Frontend" | "Backend"
 type Filter = "All" | ProjectCategory
@@ -158,7 +158,7 @@ export default function ProjectsPage() {
       : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <VantaFog>
+    <PageShell>
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-[1] bg-gradient-to-b from-background/45 via-background/25 to-background/70"
@@ -256,6 +256,6 @@ export default function ProjectsPage() {
           </Reveal>
         </div>
       </main>
-    </VantaFog>
+    </PageShell>
   )
 }

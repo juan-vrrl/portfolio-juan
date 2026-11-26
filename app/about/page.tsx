@@ -5,7 +5,7 @@ import { EducationTimeline } from "@/components/education-timeline"
 import { Reveal } from "@/components/reveal"
 import { SectionHeading } from "@/components/section-heading"
 import { SkillsSection } from "@/components/skills-section"
-import VantaWave from "@/components/VantaWave"
+import { PageShell } from "@/components/page-shell"
 
 const quickFacts = [
   { label: "Degree", value: "S1 Informatics Engineering" },
@@ -23,7 +23,7 @@ const focusAreas = [
 
 export default function AboutPage() {
   return (
-    <VantaWave>
+    <PageShell>
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-[1] bg-gradient-to-b from-background/60 via-background/35 to-background/80"
@@ -190,6 +190,6 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
-    </VantaWave>
+    </PageShell>
   )
 }

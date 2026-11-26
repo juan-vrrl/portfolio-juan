@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal"
 import { SocialLinks } from "@/components/social-links"
 import { TechIcon } from "@/components/tech-icons"
 import { TypingPhrases } from "@/components/typing-phrases"
-import VantaBird from "@/components/VantaBird"
+import { PageShell } from "@/components/page-shell"
 
 const typedPhrases = [
   "web products.",
@@ -24,7 +24,7 @@ const coreStack = [
 
 export default function HomePage() {
   return (
-    <VantaBird>
+    <PageShell>
       <main
         id="main"
         className="relative z-10 flex min-h-dvh items-start overflow-hidden px-5 pb-28 pt-16 sm:pt-20 lg:items-center lg:px-8 lg:pb-16 lg:pl-28 lg:pt-24"
@@ -130,6 +130,6 @@ export default function HomePage() {
           </Reveal>
         </div>
       </main>
-    </VantaBird>
+    </PageShell>
   )
 }
