@@ -1,115 +1,179 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { SocialLinks } from "@/components/social-links";
-import VantaBird from "@/components/VantaBird";
-import { useAOS } from "@/lib/useAOS";
-import { ReactTyped } from "react-typed";
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react"
+import { ReactTyped } from "react-typed"
+import { Reveal } from "@/components/reveal"
+import { SocialLinks } from "@/components/social-links"
+import { TechIcon } from "@/components/tech-icons"
+import VantaBird from "@/components/VantaBird"
+
+const coreStack = [
+  "TypeScript",
+  "React.js",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "Prisma",
+]
 
 export default function HomePage() {
-  useAOS();
-
-  const [age, setAge] = useState(0);
-
-  // Calculate age dynamically
-  const calculateAge = () => {
-    const birthDate = new Date("2003-06-09");
-    const today = new Date();
-
-    let years = today.getFullYear() - birthDate.getFullYear();
-    const hasHadBirthdayThisYear =
-      today.getMonth() > birthDate.getMonth() ||
-      (today.getMonth() === birthDate.getMonth() &&
-        today.getDate() >= birthDate.getDate());
-
-    if (!hasHadBirthdayThisYear) {
-      years -= 1;
-    }
-
-    return years;
-  };
-
-  useEffect(() => {
-    setAge(calculateAge());
-
-    // update at midnight if birthday passes
-    const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
-    const timeout = setTimeout(() => {
-      setAge(calculateAge());
-    }, midnight.getTime() - Date.now());
-
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
     <VantaBird>
-      <main className="relative z-10 container mx-auto px-4 py-24 min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl mx-auto text-center">
-          <div
-            className="flex flex-col items-center justify-center"
-            data-aos="fade-up"
-          >
-            <h1
-              className="text-2xl md:text-4xl lg:text-6xl font-bold mb-6 text-balance"
-              data-aos="zoom-in"
-            >
-              <span className="text-primary font-bold">
-                Juan Verrel Tanuwijaya
-              </span>
-            </h1>
+      <main
+        id="main"
+        className="relative z-10 flex min-h-dvh items-start overflow-hidden px-5 pb-28 pt-16 sm:pt-20 lg:items-center lg:px-8 lg:pb-16 lg:pl-28 lg:pt-24"
+      >
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/30 to-background/90" />
+          <div className="absolute inset-0 bg-grid-fade opacity-60" />
+        </div>
 
-            {/* React Typed */}
-            <p
-              className="text-xl md:text-2xl sm:text-sm text-muted-foreground text-balance mb-8"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              I'm {" "}
-              <ReactTyped
-                strings={[
-                  `<span class="text-[#3DB9FF]">${age} Years Old</span>`,
-                  `a <span class="text-[#3DB9FF]">Full-Stack Website Developer</span>`,
-                ]}
-                typeSpeed={60}
-                backSpeed={40}
-                backDelay={1500}
-                loop
-                showCursor
-                cursorChar="|"
-              />
-            </p>
+        <div className="relative mx-auto w-full max-w-6xl">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-16">
+            <div>
+              <Reveal>
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-border/70 bg-background/50 px-3 py-1.5 backdrop-blur-sm">
+                  <span className="status-dot h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    Full-stack developer
+                  </span>
+                </div>
+              </Reveal>
 
-            <div data-aos="fade-up" data-aos-delay="400" className="backdrop-blur-sm bg-black/20 rounded-3xl p-2">
-              <SocialLinks />
+              <Reveal delay={80}>
+                <h1 className="mt-5 font-display text-[clamp(2.7rem,7vw,4.8rem)] font-semibold leading-[0.98] tracking-[-0.035em] text-balance sm:mt-6">
+                  Juan Verrel
+                  <span className="block text-gradient">Tanuwijaya</span>
+                </h1>
+              </Reveal>
+
+              <Reveal delay={160}>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground sm:mt-6 sm:text-xl">
+                  <span className="text-foreground">I build</span>{" "}
+                  <span className="font-mono text-primary" aria-hidden="true">
+                    <ReactTyped
+                      strings={[
+                        "web products.",
+                        "scalable APIs.",
+                        "clean interfaces.",
+                        "end-to-end systems.",
+                      ]}
+                      typeSpeed={55}
+                      backSpeed={30}
+                      backDelay={1600}
+                      loop
+                      showCursor
+                      cursorChar="_"
+                    />
+                  </span>
+                  <span className="sr-only">
+                    web products, scalable APIs, clean interfaces, and
+                    end-to-end systems.
+                  </span>
+                </p>
+              </Reveal>
+
+              <Reveal delay={220}>
+                <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-muted-foreground text-pretty">
+                  Full-stack developer with a Bachelor&apos;s in Informatics
+                  Engineering, focused on connecting thoughtful interfaces with
+                  reliable back-end systems.
+                </p>
+              </Reveal>
+
+              <Reveal delay={280}>
+                <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8">
+                  <Link
+                    href="/projects"
+                    className="group inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    View projects
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                  <a
+                    href="/cv.pdf"
+                    download="Juan_Verrel_Tanuwijaya_CV.pdf"
+                    className="inline-flex h-11 items-center gap-2 rounded-lg border border-border/80 bg-background/40 px-5 text-sm font-medium text-foreground backdrop-blur-sm transition-colors hover:border-primary/40 hover:bg-card/60"
+                  >
+                    <Download className="h-4 w-4" aria-hidden="true" />
+                    Download CV
+                  </a>
+                </div>
+              </Reveal>
+
+              <Reveal delay={340}>
+                <div className="mt-6 sm:mt-8">
+                  <SocialLinks />
+                </div>
+              </Reveal>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="600" className="mt-8">
-              <a
-                href="/cv.pdf"
-                download="Juan_Verrel_Tanuwijaya_CV.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 backdrop-blur-sm bg-black/20 text-primary rounded-lg hover:bg-primary/90 hover:text-primary-foreground transition-colors font-medium"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            <Reveal delay={240} className="hidden sm:block">
+              <div className="relative mx-auto w-full max-w-[330px]">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-3 rounded-[2rem] border border-primary/15"
+                />
+                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border/70 bg-card/50 shadow-2xl">
+                  <Image
+                    src="/profile.jpeg"
+                    alt="Portrait of Juan Verrel Tanuwijaya"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 330px, 340px"
+                    className="object-cover object-center"
                   />
-                </svg>
-                Download CV
-              </a>
-            </div>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent"
+                  />
+                  <div className="absolute inset-x-3 bottom-3 rounded-2xl border border-border/60 bg-background/70 p-3.5 backdrop-blur-md">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                      Full-stack developer
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      S1 Informatics Engineering · ITERA
+                    </p>
+                  </div>
+                </div>
+
+                <div className="absolute -right-3 top-6 rounded-full border border-primary/30 bg-background/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-primary shadow-lg backdrop-blur">
+                  2025 graduate
+                </div>
+              </div>
+            </Reveal>
           </div>
+
+          <Reveal delay={400}>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-5 sm:mt-14">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/80">
+                Core stack
+              </span>
+              {coreStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="inline-flex items-center gap-2 text-xs text-muted-foreground/90"
+                >
+                  <TechIcon name={tech} className="h-4 w-4" />
+                  {tech}
+                </span>
+              ))}
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-primary sm:ml-auto"
+              >
+                All skills
+                <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </main>
     </VantaBird>
-  );
+  )
 }
