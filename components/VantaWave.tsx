@@ -1,9 +1,21 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useVantaEffect } from "@/components/use-vanta-effect"
 
-interface VantaEffect {
-  destroy(): void;
+const loadWavesEffect = () => import("vanta/dist/vanta.waves.min.js")
+
+const wavesOptions = {
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.0,
+  minWidth: 200.0,
+  scale: 1.0,
+  scaleMobile: 1.0,
+  color: 0x04121b,
+  shininess: 50,
+  waveHeight: 20,
+  waveSpeed: 0.5,
+  zoom: 1,
 }
 
 export default function VantaWave({
@@ -11,76 +23,15 @@ export default function VantaWave({
 }: {
   children: React.ReactNode
 }) {
-  const vantaRef = useRef<HTMLDivElement | null>(null)
-  const [vantaEffect, setVantaEffect] = useState<VantaEffect | null>(null)
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  useEffect(() => {
-    if (!isClient || !vantaRef.current || vantaEffect) return
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-
-    const initVanta = async () => {
-      try {
-        const [{ default: WAVES }, THREE] = await Promise.all([
-          import("vanta/dist/vanta.waves.min.js"),
-          import("three")
-        ])
-
-        if (vantaRef.current) {
-          const effect = WAVES({
-            el: vantaRef.current,
-            THREE,
-            mouseControls: true,
-            touchControls: true,
-            minHeight: 200.0,
-            minWidth: 200.0,
-            scale: 1.0,
-            scaleMobile: 1.0,
-            color: 0x04121B,
-            shininess: 50,
-            waveHeight: 20,
-            waveSpeed: 0.5,
-            zoom: 1,
-          })
-          setVantaEffect(effect)
-        }
-      } catch (error) {
-        console.error("Error initializing Vanta Waves effect:", error)
-      }
-    }
-
-    initVanta()
-  }, [isClient, vantaEffect])
-
-  useEffect(() => {
-    return () => {
-      if (vantaEffect) {
-        try {
-          vantaEffect.destroy()
-        } catch (error) {
-          console.warn("Error destroying Vanta Waves effect:", error)
-        }
-        setVantaEffect(null)
-      }
-    }
-  }, [vantaEffect])
-
-  if (!isClient) {
-    return (
-      <>
-        <div className="fixed inset-0 w-full h-full bg-[#04121B] z-0" />
-        <div className="relative z-10 min-h-screen">{children}</div>
-      </>
-    )
-  }
+  const vantaRef = useVantaEffect(loadWavesEffect, wavesOptions)
 
   return (
     <>
-      <div ref={vantaRef} className="fixed inset-0 w-full h-full z-0" />
+      <div
+        ref={vantaRef}
+        aria-hidden="true"
+        className="fixed inset-0 z-0 h-full w-full bg-[#04121b]"
+      />
       <div className="relative z-10 min-h-screen">{children}</div>
     </>
   )
