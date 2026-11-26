@@ -1,12 +1,17 @@
-"use client"
-
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Download } from "lucide-react"
-import { ReactTyped } from "react-typed"
 import { Reveal } from "@/components/reveal"
 import { SocialLinks } from "@/components/social-links"
 import { TechIcon } from "@/components/tech-icons"
+import { TypingPhrases } from "@/components/typing-phrases"
 import VantaBird from "@/components/VantaBird"
+
+const typedPhrases = [
+  "web products.",
+  "scalable APIs.",
+  "clean interfaces.",
+  "end-to-end systems.",
+]
 
 const coreStack = [
   "TypeScript",
@@ -52,20 +57,7 @@ export default function HomePage() {
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground sm:mt-6 sm:text-xl">
               <span className="text-foreground">I build</span>{" "}
               <span className="font-mono text-primary" aria-hidden="true">
-                <ReactTyped
-                  strings={[
-                    "web products.",
-                    "scalable APIs.",
-                    "clean interfaces.",
-                    "end-to-end systems.",
-                  ]}
-                  typeSpeed={55}
-                  backSpeed={30}
-                  backDelay={1600}
-                  loop
-                  showCursor
-                  cursorChar="_"
-                />
+                <TypingPhrases strings={typedPhrases} />
               </span>
               <span className="sr-only">
                 web products, scalable APIs, clean interfaces, and end-to-end
