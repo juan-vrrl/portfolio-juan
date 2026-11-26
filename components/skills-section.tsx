@@ -36,7 +36,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Tools & Platforms",
     icon: Wrench,
-    skills: ["Git", "Figma", "AWS", "Deployment"],
+    skills: ["Git", "Figma", "Docker", "AWS", "Deployment"],
   },
 ]
 
