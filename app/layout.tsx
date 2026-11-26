@@ -6,23 +6,24 @@ import { Suspense } from "react"
 import { FloatingNavigation } from "@/components/floating-navigation"
 import "./globals.css"
 
+/* Only the weights actually used in the UI are loaded. */
 const sora = Sora({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600"],
   variable: "--font-sora",
   display: "swap",
 })
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   variable: "--font-manrope",
   display: "swap",
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
   variable: "--font-jetbrains-mono",
   display: "swap",
 })

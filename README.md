@@ -52,6 +52,8 @@ components/
   education-timeline.tsx
   project-card.tsx
   tech-icons.tsx
+  typing-phrases.tsx
+  use-vanta-effect.ts
   social-links.tsx
   ui/                  # shadcn-style primitives
 lib/
@@ -62,5 +64,6 @@ public/                # Images, CV, favicon
 ## Notes
 
 - All motion respects `prefers-reduced-motion`.
-- Project images are served through `next/image`; `sharp` is installed for production image optimization.
+- Vanta/three.js backgrounds initialise after `load` on an idle frame, so WebGL never competes with hydration or first paint; device pixel ratio is capped at 2x.
+- Project images are served through `next/image` with AVIF/WebP output; `sharp` is installed for production image optimization.
 - Large source images for the heaviest project cards are available as optimized `.webp` files under `public/`.
